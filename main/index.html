@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Simple Chat</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+<body>
+  <button id="createRoomButton" type="button" onclick="create();">create room</button>
+</body>
+<script>
+  const createBtn = document.getElementById("createRoomButton")
+
+  const create = async(e) => {
+    // e.preventDefault()
+
+    const resp = await fetch("http://127.0.0.1:8091/create")
+    const {room_id} = await resp.json()
+
+    window.location.href = `http://127.0.0.1:8091/screen/${room_id}`
+  }
+</script>
